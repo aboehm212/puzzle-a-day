@@ -1,0 +1,15 @@
+services:
+  puzzle-a-day:
+    build: .
+    image: puzzle-a-day:latest
+    container_name: puzzle-a-day
+    ports:
+      - "8080:8080"
+    volumes:
+      - puzzle-data:/data
+    restart: unless-stopped
+    # Falls es auf deinem System trotzdem „Permission denied“ gibt,
+    # die nächste Zeile einkommentieren (Container läuft dann als root):
+    # user: "0"
+volumes:
+  puzzle-data:
